@@ -64,3 +64,33 @@ function CreateToDoItems() {
   todoValue.value = "";
   setAlertMessage("Todo item Created Successfully!");
 }
+
+//function to read the todo list items from local storage and display them on the page
+function ReadToDoItems() {
+  todo.forEach((element) => {
+    let li = document.createElement("li");
+    let style = "";
+    if (element.status) {
+      style = "style='text-decoration: line-through'";
+    }
+    const todoItems = `<div ${style} title="Hit Double Click and Complete" ondblclick="CompletedToDoItems(this)">${
+      element.item
+    }
+    ${
+      style === ""
+        ? ""
+        : '<img class="todo-controls" src="/images/check-mark.png" />'
+    }</div><div>
+    ${
+      style === ""
+        ? '<img class="edit todo-controls" onclick="UpdateToDoItems(this)" src="/images/pencil.png" />'
+        : ""
+    }
+    <img class="delete todo-controls" onclick="DeleteToDoItems(this)" src="/images/delete.png" /></div></div>`;
+    li.innerHTML = todoItems;
+    listItems.appendChild(li);
+  });
+}
+
+//load the todo list items from local storage and display them on the page when the page is loaded
+ReadToDoItems();
