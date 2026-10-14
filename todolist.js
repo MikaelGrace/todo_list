@@ -94,3 +94,46 @@ function ReadToDoItems() {
 
 //load the todo list items from local storage and display them on the page when the page is loaded
 ReadToDoItems();
+
+//function to update a todo list item
+function UpdateToDoItems(e) {
+  if (
+    e.parentElement.parentElement.querySelector("div").style.textDecoration ===
+    ""
+  ) {
+    todoValue.value =
+      e.parentElement.parentElement.querySelector("div").innerText;
+    updateText = e.parentElement.parentElement.querySelector("div");
+    addUpdate.setAttribute("onclick", "UpdateOnSelectionItems()");
+    addUpdate.setAttribute("src", "/images/refresh.png");
+    todoValue.focus();
+  }
+}
+
+function UpdateOnSelectionItems() {
+  let IsPresent = false;
+  todo.forEach((element) => {
+    if (element.item == todoValue.value) {
+      IsPresent = true;
+    }
+  });
+
+  if (IsPresent) {
+    setAlertMessage("This item already present in the list!");
+    return;
+  }
+
+  todo.forEach((element) => {
+    if (element.item == updateText.innerText.trim()) {
+      element.item = todoValue.value;
+    }
+  });
+  setLocalStorage();
+
+  updateText.innerText = todoValue.value;
+  addUpdate.setAttribute("onclick", "CreateToDoItems()");
+  addUpdate.setAttribute("src", "/images/plus.png");
+  todoValue.value = "";
+  setAlertMessage("Todo item Updated Successfully!");
+}
+
