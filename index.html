@@ -8,12 +8,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Todo List</h1>
+
+        <div class="todo-header">
+            <h2>ToDo List</h2>
+            <img src="images/Paper-Write--Streamline-Ultimate.png" height="50px" />
+        </div>
+
+        <div class="todo-body">
+            <input
+                type="text"
+                id="todoText"
+                class="todo-input"
+                placeholder="Add your items"
+            />
+            <img
+                src="images/Plus-Math-Symbol-Circle--Streamline-Ultimate.png"
+                alt="+"
+                id="AddUpdateClick"
+                onclick="CreateToDoItems();"
+            />
+        </div>
+        <!-- <h1>Todo List</h1>
         <form id="todo-form">
             <input type="text" id="todo-input" placeholder="Add a new task..." required>
             <button type="submit">Add</button>
         </form>
-        <ul id="todo-list"></ul>
+        <ul id="todo-list"></ul> -->
     </div>
 
     <script src="script.js"></script>
