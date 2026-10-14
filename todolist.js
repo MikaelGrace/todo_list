@@ -160,5 +160,25 @@ function DeleteToDoItems(e) {
   }
 }
 
+//function to mark a todo list item as completed
+function CompletedToDoItems(e) {
+  if (e.parentElement.querySelector("div").style.textDecoration === "") {
+    const img = document.createElement("img");
+    img.src = "/images/check-mark.png";
+    img.className = "todo-controls";
+    e.parentElement.querySelector("div").style.textDecoration = "line-through";
+    e.parentElement.querySelector("div").appendChild(img);
+    e.parentElement.querySelector("img.edit").remove();
 
+    todo.forEach((element) => {
+      if (
+        e.parentElement.querySelector("div").innerText.trim() == element.item
+      ) {
+        element.status = true;
+      }
+    });
+    setLocalStorage();
+    setAlertMessage("Todo item Completed Successfully!");
+  }
+}
 
