@@ -154,3 +154,16 @@ li.deleted-item {
     transform: translateY(600px) rotateZ(90deg);
   }
 }
+
+/*animation to hide messages slowly once user completes an activity*/
+.toggleMe {
+  animation: hideMe 5s forwards;
+}
+@keyframes hideMe {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
