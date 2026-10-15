@@ -60,9 +60,10 @@ function CreateToDoItems() {
     let itemList = { item: todoValue.value, status: false };
     todo.push(itemList);
     setLocalStorage();
+    setAlertMessage("Todo item Created Successfully!");
   }
   todoValue.value = "";
-  setAlertMessage("Todo item Created Successfully!");
+  
 }
 
 //function to read the todo list items from local storage and display them on the page
